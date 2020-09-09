@@ -30,6 +30,7 @@ The goals / steps of this project are the following:
 [searchPrev]: ./output_images/search_region.png "Search Previous Frame"
 [videoFrame]: ./output_images/sample_video_frame.png "Sample Video Frame"
 [errorLane]: ./output_images/error_with_poly_fit.png "Poly Fit Error"
+[potentialHassel]: ./output_images/potential_hassel.png "Potential Hassle"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -126,4 +127,6 @@ Here's a [link to my video result](./process_pipline_output.mp4)
 I had issues when trying to get adequate pixels from the lane detection. At the beginning, I used an `AND` method on the HLS and HSV pixel selections, but that didn't give a lot of pixels on the dash lane, and resulted something like this:  
 ![alt_text][errorLane]  
 Then I changed it to an `OR` operation on the two color channel, slightly decreased the range of the color, and that solves the issue.  
-I had a few bad frames where the road is bright, and that messes with the color thresholding. But due to the continunity on the road width and search area, even though the binary image got false positives, it still maintained the most of it. I can make the detection pipeline into a class and keep track of the medium lane width to keep the car from driving off the road, or drop the frame if too many false positives occurred comparing to the previous frame.
+I had a few bad frames where the road is bright, and that messes with the color thresholding.   
+![alt_text][potentialHassel]  
+But due to the continunity on the road width and search area, even though the binary image got false positives, it still maintained the most of it. To fix this, I can make the detection pipeline into a class and keep track of the medium lane width to keep the car from driving off the road, or drop this frame if too many false positives occurred comparing to the previous frame.
